@@ -2,12 +2,21 @@ import os
 import json
 import requests
 import psycopg2
+import nltk  # <--- Make sure this is imported
 from flask import Flask, jsonify, render_template_string
 from textblob import TextBlob
 from collections import Counter
 from datetime import datetime, timedelta
 
+# --- FIX: Download NLTK data on startup ---
+# This ensures the 'brain' has the dictionary it needs to split words.
+nltk.download('punkt')
+nltk.download('punkt_tab') 
+# ------------------------------------------
+
 app = Flask(__name__)
+
+# ... rest of your code ...
 
 # --- CONFIGURATION ---
 # Get this from your Supabase "Connect" -> "URI" section
